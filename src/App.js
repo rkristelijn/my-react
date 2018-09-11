@@ -13,12 +13,17 @@ class App extends Component {
   }
 
   switchNameHandler = () => {
-    console.log('was clicked', this);
-  } // was clicked App {}
+    //this.state.persons[0].name = 'Maximilian'; //Line 16:  Do not mutate state directly. Use setState()  react/no-direct-mutation-state
+    this.setState({persons:[
+      { name: 'Maximilian', age: 28 },
+      { name: 'Manu', age: 29 },
+      { name: 'Stepanie', age: 27 },
+    ]});
+  } // LOG: was clicked App {}
 
   // switchNameHandler() {
   //   console.log('was clicked', this);
-  // } // was clicked undefined 
+  // } // LOG: was clicked undefined 
 
   render = () => (
     <div className="App">
