@@ -41,16 +41,28 @@ class App extends Component {
   // note: switchNameHandler can be passed as a method in props
   // bind(this, newValue) let's you pass values
   // alternatively you can use () => this.switchNameHandler('Blaaa'), but bind is preferred, because this is inefficient (performance)
-  render = () => (
-    <div className="App">
-      <h1>Hi, I'm a React App</h1>
-      <p>This is really working!</p>
-      <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={this.nameChangedHandler} />
-      <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} click={this.switchNameHandler.bind(this, 'Remi')} />
-      <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler}/>
-      <button onClick={this.switchNameHandler.bind(this, 'Remi')}>Switch name</button>
-    </div>
-  );
+  render = () => {
+
+    //following style is scoped, whereas class App is global
+    let style = {
+      backgroundColor: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
+
+    return (
+      <div className="App">
+        <h1>Hi, I'm a React App</h1>
+        <p>This is really working!</p>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={this.nameChangedHandler} />
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} click={this.switchNameHandler.bind(this, 'Remi')} />
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler} />
+        <button style={style} onClick={this.switchNameHandler.bind(this, 'Remi')}>Switch name</button>
+      </div>
+    );
+  };
   // we need to import React, because under the hood is is used to compile the nested HTML, JSX
   // Alternatively you can use React.createElement('div', {className:'App'}, React.createElement('h1',null,))
   // render = () => React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'hello world'));
