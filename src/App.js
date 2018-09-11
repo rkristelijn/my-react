@@ -11,6 +11,15 @@ class App extends Component {
       { name: 'Stepanie', age: 26 },
     ]
   }
+
+  switchNameHandler = () => {
+    console.log('was clicked', this);
+  } // was clicked App {}
+
+  // switchNameHandler() {
+  //   console.log('was clicked', this);
+  // } // was clicked undefined 
+
   render = () => (
     <div className="App">
       <h1>Hi, I'm a React App</h1>
@@ -18,7 +27,7 @@ class App extends Component {
       <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
       <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
       <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
-      <button>Switch name</button>
+      <button onClick={this.switchNameHandler}>Switch name</button>
     </div>
   );
   // we need to import React, because under the hood is is used to compile the nested HTML, JSX
