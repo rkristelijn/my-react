@@ -11,8 +11,13 @@ class App extends Component {
       { name: 'Max', age: 28 },
       { name: 'Manu', age: 29 },
       { name: 'Stephanie', age: 26 },
-    ]
+    ],
+    showPersons: false
   }
+
+  // switchNameHandler() {
+  //   console.log('was clicked', this);
+  // } // LOG: was clicked undefined -> so with old syntax, 'this' is undefined
 
   switchNameHandler = (newName) => {
     //this.state.persons[0].name = 'Maximilian'; //Line 16:  Do not mutate state directly. Use setState()  react/no-direct-mutation-state
@@ -45,9 +50,10 @@ class App extends Component {
     })
   }
 
-  // switchNameHandler() {
-  //   console.log('was clicked', this);
-  // } // LOG: was clicked undefined -> so with old syntax, 'this' is undefined
+  togglePersonsHandler = () => {
+    // console.log(this.state);
+    this.setState({ showPersons: !this.state.showPersons })
+  }
 
 
   // note: switchNameHandler can be passed as a method in props
@@ -68,11 +74,16 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working!</p>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={this.nameChangedHandler} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} click={this.switchNameHandler.bind(this, 'Remi')} />
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler} />
-        <button style={style} onClick={this.switchNameHandler.bind(this, 'Remi')}>Switch name</button>
-
+        <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons {this.state.showPersons}</button>
+        {this.state.showPersons
+          ? <div>
+            <Person name={this.state.persons[0].name} age={this.state.persons[0].age} changed={this.nameChangedHandler} />
+            <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} click={this.switchNameHandler.bind(this, 'Remi')} />
+            <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler} />
+            <button style={style} onClick={this.switchNameHandler.bind(this, 'Remi')}>Switch name</button>
+          </div>
+          : null
+        }
         <UserInput />
         <UserOutput username={this.state.persons[0].name} />
         <UserOutput username={this.state.persons[1].name} />
