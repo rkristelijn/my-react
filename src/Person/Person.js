@@ -1,10 +1,7 @@
 import React from 'react';
-//import Radium from 'radium';
 import classes from './Person.css';
 
 const person = (props) => {
-    //Uncaught Error: To use plugins requiring `addCSS` (e.g. keyframes, media queries), please wrap your application in the StyleRoot component. Component name: `person`.
-    // solution: wrap full app in <StyleRoot>
     const style = {
         // '@media (min-width: 500px)': {
         //     width: '450px'
@@ -17,5 +14,4 @@ const person = (props) => {
     </div>);
 }
 
-//export default Radium(person);
 export default person;

@@ -72,6 +72,7 @@ class App extends Component {
       // }
     };
 
+    let btnClass = null;
     let persons = null;
 
     if (this.state.showPersons) {
@@ -83,37 +84,18 @@ class App extends Component {
           })}
         </div>);
 
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
-    }
-
-    //let classes = ['red', 'bold'].join(' ');
-    let assignedClasses = [];
-    if (this.state.persons.length <= 2) {
-      assignedClasses.push(classes.red);
-    }
-    if (this.state.persons.length <= 1) {
-      assignedClasses.push(classes.bold);
+      btnClass = classes.Red;
     }
 
     return (
-      // <StyleRoot>
-        <div className={classes.App}>
-          <h1>Hi, I'm a React App</h1>
-          <p className={assignedClasses.join(' ')}>This is really working!</p>
-          <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons {this.state.showPersons}</button>
-          {persons}
-        </div>
-      // </StyleRoot>
+      <div className={classes.App}>
+        <h1>Hi, I'm a React App</h1>
+        <p>This is really working!</p>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>Toggle Persons {this.state.showPersons}</button>
+        {persons}
+      </div>
     );
   };
-  // we need to import React, because under the hood is is used to compile the nested HTML, JSX
-  // Alternatively you can use React.createElement('div', {className:'App'}, React.createElement('h1',null,))
-  // render = () => React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'hello world'));
 };
 
-// export default Radium(App);
 export default App;
