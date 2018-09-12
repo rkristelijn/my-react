@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Radium, { StyleRoot } from 'radium';
+// import Radium, { StyleRoot } from 'radium';
 import './App.css';
 import Person from './Person/Person';
 
@@ -81,10 +81,10 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      ':hover': { //hover is a css pseudo selector
-        backgroundColor: 'lightgreen',
-        color: 'black'
-      }
+      // ':hover': { //hover is a css pseudo selector
+      //   backgroundColor: 'lightgreen',
+      //   color: 'black'
+      // }
     };
 
     let persons = null;
@@ -115,14 +115,14 @@ class App extends Component {
     }
 
     return (
-      <StyleRoot>
+      // <StyleRoot>
         <div className="App">
           <h1>Hi, I'm a React App</h1>
           <p className={classes.join(' ')}>This is really working!</p>
           <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons {this.state.showPersons}</button>
           {persons}
         </div>
-      </StyleRoot>
+      // </StyleRoot>
     );
   };
   // we need to import React, because under the hood is is used to compile the nested HTML, JSX
@@ -130,4 +130,5 @@ class App extends Component {
   // render = () => React.createElement('div', { className: 'App' }, React.createElement('h1', null, 'hello world'));
 };
 
-export default Radium(App);
+// export default Radium(App);
+export default App;
