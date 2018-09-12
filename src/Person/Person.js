@@ -1,6 +1,6 @@
 import React from 'react';
 //import Radium from 'radium';
-import './Person.css';
+import classes from './Person.css';
 
 const person = (props) => {
     //Uncaught Error: To use plugins requiring `addCSS` (e.g. keyframes, media queries), please wrap your application in the StyleRoot component. Component name: `person`.
@@ -10,7 +10,7 @@ const person = (props) => {
         //     width: '450px'
         // }
     }
-    return (<div className="Person" style={style}>
+    return (<div className={classes.Person} style={style}>
         <p onClick={props.click}>I'm {props.name} and I am {props.age} years old!</p>
         <p>{props.children}</p>
         <input type="text" onChange={props.changed} value={props.name} />
