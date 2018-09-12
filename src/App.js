@@ -56,8 +56,12 @@ class App extends Component {
   }
 
   deletePersonHandler = (index) => {
-    const persons = this.state.persons;
+    console.log('deletePersonHandler', index);
+    // never mutate state bit by bit, create a copy (spread operator)
+    const persons = [...this.state.persons];
+    // mutate
     persons.splice(index, 1);
+    // update state
     this.setState({ persons: persons });
   }
 
@@ -92,11 +96,6 @@ class App extends Component {
         <p>This is really working!</p>
         <button style={style} onClick={this.togglePersonsHandler}>Toggle Persons {this.state.showPersons}</button>
         {persons}
-        <UserInput />
-        <UserOutput username={this.state.persons[0].name} />
-        <UserOutput username={this.state.persons[1].name} />
-
-        <button onClick={this.sayHiHandler}>Hi</button>
       </div>
     );
   };
