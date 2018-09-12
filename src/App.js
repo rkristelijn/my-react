@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import UserInput from './UserInput/UserInput';
+import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   //state is part of Component
@@ -33,6 +35,16 @@ class App extends Component {
     });
   }
 
+  sayHiHandler = (event) => {
+    this.setState({
+      persons: [
+        { name: 'Bla', age: 28 },
+        { name: 'Bla', age: 29 },
+        { name: 'Bla', age: 27 },
+      ]
+    })
+  }
+
   // switchNameHandler() {
   //   console.log('was clicked', this);
   // } // LOG: was clicked undefined -> so with old syntax, 'this' is undefined
@@ -60,6 +72,12 @@ class App extends Component {
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} changed={this.nameChangedHandler} click={this.switchNameHandler.bind(this, 'Remi')} />
         <Person name={this.state.persons[2].name} age={this.state.persons[2].age} changed={this.nameChangedHandler} />
         <button style={style} onClick={this.switchNameHandler.bind(this, 'Remi')}>Switch name</button>
+
+        <UserInput />
+        <UserOutput username={this.state.persons[0].name} />
+        <UserOutput username={this.state.persons[1].name} />
+
+        <button onClick={this.sayHiHandler}>Hi</button>
       </div>
     );
   };
