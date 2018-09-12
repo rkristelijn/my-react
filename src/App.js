@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
-import UserInput from './UserInput/UserInput';
-import UserOutput from './UserOutput/UserOutput';
 
 class App extends Component {
   //state is part of Component
   state = {
     persons: [
-      { name: 'Max', age: 28 },
-      { name: 'Manu', age: 29 },
-      { name: 'Stephanie', age: 26 },
+      { id: 'asdf', name: 'Max', age: 28 },
+      { id: 'fda', name: 'Manu', age: 29 },
+      { id: 'ergwe', name: 'Stephanie', age: 26 },
     ],
     showPersons: false
   }
@@ -30,25 +28,25 @@ class App extends Component {
   //   });
   // } // LOG: was clicked App {}
 
-  nameChangedHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Max', age: 28 },
-        { name: event.target.value, age: 29 },
-        { name: 'Stephanie', age: 27 },
-      ]
-    });
-  }
+  // nameChangedHandler = (event) => {
+  //   this.setState({
+  //     persons: [
+  //       { name: 'Max', age: 28 },
+  //       { name: event.target.value, age: 29 },
+  //       { name: 'Stephanie', age: 27 },
+  //     ]
+  //   });
+  // }
 
-  sayHiHandler = (event) => {
-    this.setState({
-      persons: [
-        { name: 'Bla', age: 28 },
-        { name: 'Bla', age: 29 },
-        { name: 'Bla', age: 27 },
-      ]
-    })
-  }
+  // sayHiHandler = (event) => {
+  //   this.setState({
+  //     persons: [
+  //       { name: 'Bla', age: 28 },
+  //       { name: 'Bla', age: 29 },
+  //       { name: 'Bla', age: 27 },
+  //     ]
+  //   })
+  // }
 
   togglePersonsHandler = () => {
     // console.log(this.state);
@@ -85,7 +83,7 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} />
+            return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} key={person.id} />
           })}
         </div>);
     }
