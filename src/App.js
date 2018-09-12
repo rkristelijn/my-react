@@ -28,15 +28,29 @@ class App extends Component {
   //   });
   // } // LOG: was clicked App {}
 
-  // nameChangedHandler = (event) => {
-  //   this.setState({
-  //     persons: [
-  //       { name: 'Max', age: 28 },
-  //       { name: event.target.value, age: 29 },
-  //       { name: 'Stephanie', age: 27 },
-  //     ]
-  //   });
-  // }
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      //execute for each element
+      return (p.id === id);
+    });
+
+    //make a copy 
+    // ES5: const person = Object.assign({}, this.state.persons[personIndex]);
+    // ES7: using spread operator
+    const person = {
+      ...this.state.persons[personIndex]
+    };
+
+    //update the person
+    person.name = event.target.value;
+    
+    // make again a copy 
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
+    // finally set the state
+    this.setState({persons: persons});
+  }
 
   // sayHiHandler = (event) => {
   //   this.setState({
@@ -83,7 +97,8 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person name={person.name} age={person.age} click={() => this.deletePersonHandler(index)} key={person.id} />
+            return <Person name={person.name} age={person.age} changed={(event) => this.nameChangedHandler(event, person.id)}
+            click={() => this.deletePersonHandler(index)} key={person.id} />
           })}
         </div>);
     }
