@@ -52,16 +52,6 @@ class App extends Component {
     this.setState({persons: persons});
   }
 
-  // sayHiHandler = (event) => {
-  //   this.setState({
-  //     persons: [
-  //       { name: 'Bla', age: 28 },
-  //       { name: 'Bla', age: 29 },
-  //       { name: 'Bla', age: 27 },
-  //     ]
-  //   })
-  // }
-
   togglePersonsHandler = () => {
     // console.log(this.state);
     this.setState({ showPersons: !this.state.showPersons })
@@ -84,7 +74,8 @@ class App extends Component {
 
     //following style is scoped, whereas class App is global
     let style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -101,6 +92,8 @@ class App extends Component {
             click={() => this.deletePersonHandler(index)} key={person.id} />
           })}
         </div>);
+
+        style.backgroundColor = 'red';
     }
 
     return (
