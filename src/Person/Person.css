@@ -7,10 +7,8 @@
     text-align: center;
 }
 
-/* 
-if you want to scope it to a component or change dynamically @see Person.js
 @media (min-width: 500px) {
     .Person {
         width:450px;
     }
-} */
+}

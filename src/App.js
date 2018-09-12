@@ -66,10 +66,6 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      // ':hover': { //hover is a css pseudo selector
-      //   backgroundColor: 'lightgreen',
-      //   color: 'black'
-      // }
     };
 
     let btnClass = null;
